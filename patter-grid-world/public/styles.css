@@ -1,0 +1,31 @@
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.triangle {
+  width: 100px;
+  height: 100px;
+}
+
+.tbg {
+  background-color: gray;
+}
+
+.t1 {
+  clip-path: polygon(0% 0%, 0% 100%, 100% 0%);
+}
+
+.t2 {
+  clip-path: polygon(100% 0%, 0% 0%, 100% 100%);
+}
+
+.t3 {
+  clip-path: polygon(100% 100%, 0% 100%, 100% 0%);
+}
+
+.t4 {
+  clip-path: polygon(0% 100%, 0% 0%, 100% 100%);
+}
