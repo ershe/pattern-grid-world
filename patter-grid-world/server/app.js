@@ -5,7 +5,7 @@ const sqlite3 = require("sqlite3").verbose();
 
 const app = express();
 const db = new sqlite3.Database("./triangle.db");
-app.use(express.static("public"));
+app.use(express.static("./"));
 
 // Create a table (if not exists)
 var createStateTable =
@@ -40,12 +40,12 @@ app.post("/statetb", express.json(), (req, res) => {
   );
 });
 
-sql = `DELETE FROM statetb WHERE id = ?`;
-for (let i = 0; i < 25; i++) {
-  db.run(sql, [i], (err) => {
-    if (err) return console.log(err.message);
-  });
-}
+// sql = `DELETE FROM statetb WHERE id = ?`;
+// for (let i = 0; i < 45; i++) {
+//   db.run(sql, [i], (err) => {
+//     if (err) return console.log(err.message);
+//   });
+// }
 
 // query the data
 sql = `SELECT * FROM statetb`;

@@ -81,13 +81,6 @@ function saveState() {
   console.log(finalState);
   console.log(formattedDate);
 
-  //   $.post(
-  //     "/statetb",
-  //     { state: finalState, date_created: formattedDate },
-  //     {},
-  //     "json"
-  //   );
-
   // Data to be sent in the POST request
   const data = {
     state: finalState,
@@ -118,23 +111,26 @@ function saveState() {
     });
 }
 
-$(document).ready(function () {
-  $("#g").on("click", function () {
-    // Perform GET request using jQuery
-    $.get("/statetb", function (data) {
-      console.log("GET Response:", data);
-      // Handle the response data as needed
-    });
-  });
+const loadStateExecute = document.getElementById("get-state");
 
-  $("#p").on("click", function () {
-    // Data to be added
-    var newData = { state: finalState }; // Replace with your desired data
-
-    // Perform POST request using jQuery
-    $.post("/statetb", newData, function (data) {
-      console.log("POST Response:", data);
-      // Handle the response data as needed
-    });
-  });
+loadStateExecute.addEventListener("click", function () {
+  loadState();
 });
+
+function loadState() {
+  fetch("/statetb", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json)
+    .then((data) => {
+      // Handle the fetched data
+      console.log(data);
+    })
+    .catch((error) => {
+      // Handle errors
+      console.error("Fetch error:", error);
+    });
+}
